@@ -1,0 +1,135 @@
+print('Det är en lönekalkylator \n för ett företag "Bästa AB"')
+print('-----------------------------------------------------------------')
+print('-----------------------------------------------------------------')
+#------------------------------------------------------------------------
+# Funktionen räknar ut lön för kvällar och helger.
+#------------------------------------------------------------------------
+def kväll_helg (timmar):
+    ob_kväll_helg=(timlön*1.3)*timmar
+    return ob_kväll_helg
+#------------------------------------------------------------------------
+# Funktionen räknar ut lön för nattarbete.
+#------------------------------------------------------------------------
+def natt (timmar):
+    ob_natt=(timlön*1.5)*timmar
+    return ob_natt
+#------------------------------------------------------------------------
+# Skriver ut en lista på avdelningar att välja bland:
+# lönerna skiljer sig mellan olika regioner.
+#------------------------------------------------------------------------
+# Om man skriver en fel siffra, ett felmeddelande visas
+# och loop börjar om på nytt.
+#------------------------------------------------------------------------
+while True:
+    avd=['Stockholm - 1','Uppsala   - 2','Kiruna    - 3']
+    for x in avd:
+        print(x)
+    a=int(input('Ange avdelningsnummer: '))
+    if a<=0 or a>=4:
+        print ('Du har skrivit fel.')
+        print('---------------------------------------------------------')
+        continue
+    print('-------------------------------------------------------------')
+#------------------------------------------------------------------------
+# Föreslår att välja en anställning.
+# Om man skriver en fel siffra, ett felmeddelande visas
+#  och loop börjar om på nytt.
+#-----------------------------------------------------------------------
+    while True:
+        pos=['Schef     - 1','Proffs    - 2','Arbetare  - 3']
+        for y in pos:
+            print(y)
+        b=int(input('Ange befattningsnummer: '))
+        if b<=0 or b>=4:
+            print ('Du har skrivit fel.')
+            print ('---------------------------------------------------')
+            continue
+#------------------------------------------------------------------------
+# Skriver ut ordinarie månadslön för Stockholm,
+# beroende på anställning.
+#-----------------------------------------------------------------------
+        else:
+            print('-----------------------------------------------------')
+
+            if a==1:
+                if b==1:
+                    c=65000
+                    print('Baslön är:',c)
+                elif b==2:
+                    c=45000
+                    print('Baslön är:',c)
+                elif b==3:
+                    c=33000
+                    print('Baslön är:',c)
+#-------------------------------------------------------------------------
+# Skriver ut ordinarie månadslön för Uppsala,
+# beroende på anställning.
+#-------------------------------------------------------------------------
+            elif a==2:
+                if b==1:
+                    c=55000
+                    print('Baslön är:',c)
+                elif b==2:
+                    c=40000
+                    print('Baslön är:',c)
+                elif b==3:
+                    c=30000
+                    print('Baslön är:',c)
+#-------------------------------------------------------------------------
+# Skriver ut ordinarie månadslön för Kiruna,
+# beroende på anställning.
+#-------------------------------------------------------------------------
+            elif a==3:
+                if b==1:
+                    c=47000
+                    print('Baslön är:',c)
+                elif b==2:
+                    c=35000
+                    print('Baslön är:',c)
+                elif b==3:
+                    c=25000
+                    print('Baslön är:',c)
+            print('-----------------------------------------------------')
+#------------------------------------------------------------------------
+# Frågar om personen i fråga har arbetat övertid.
+# Om svaret är "y", skriver ut ordinarie timlön
+# och uppmanar att skriva antal timmar ob och natt.
+#------------------------------------------------------------------------
+            while True:
+                d = input('Har du jobbat övertid? Svara y/n: ')
+                if d=='y':
+                    timlön=c/160
+                    print ('Din ordinarie timlön är: ',timlön)
+                    print('---------------------------------------------')
+                    timmar_ob=float(input('Skriv antal timmar kväll/helg: '))
+                    timmar_natt=float(input('Skriv antal timmar natt: '))
+                    print('---------------------------------------------')
+#------------------------------------------------------------------------
+# Anropar funktionerna och räknar ut summan på
+# ordinarie månadslön + lön för övertid
+# med koefficient 1,3 för kvällar/helger och 1,5 för nattarbete.
+#------------------------------------------------------------------------
+                    print ('Lönesumman till utbetalning totalt: ',(c+((kväll_helg(timmar_ob))+(natt(timmar_natt)))),"kronor.")
+
+                    print('---------------------------------------------')
+                    print('---------------------------------------------')
+#------------------------------------------------------------------------
+# Om personen har inte arbetat övertid och svaret är "n":
+# önskar en bra dag.
+#------------------------------------------------------------------------
+                elif d=='n':
+                    print('Ha en bra dag!')
+                    print('---------------------------------------------')
+                    print('---------------------------------------------')
+#------------------------------------------------------------------------
+# Om fel i input inträffar (inte "y" eller "n"),
+# skriver ut ett felmeddelande
+# och kommer tillbacka till frågan "Har jobbat övertid? Svara y/n: "
+                else:
+                    print('Antingen "y" (ja) eller "n"(nej).')
+                    print('---------------------------------------------')
+#------------------------------------------------------------------------
+# Egentligen, delen som handlar om övertid är oändlig.
+                    continue
+#________________________________________________________________________
+
